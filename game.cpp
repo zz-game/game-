@@ -3,6 +3,8 @@
 #include"object.h"
 #include"draw.h"
 #include"init.h"
+#include"player.h"
+#include"keymovement.h"
 /*************************************************
 主函数部分
 **************************************************/
