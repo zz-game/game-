@@ -16,7 +16,7 @@ class object
         bool inside(int x,int y);//点是否在碰撞箱内
         bool ongroud();//物品是否直接或间接摆在地上
         void fall(long long timegap);//随重力下落
-        object(int x,int y,bool f,int sx,int sy,LPCSTR file);//！！！！注意
+        object(int x,int y,bool f,int sx,int sy,LPCSTR file);
         object();
 };
 object::object()
