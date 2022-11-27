@@ -23,9 +23,8 @@ object::object()
 {
 
 }
-object::object(int x,int y,bool f,int sx,int sy,LPCSTR file)
+object::object(int x,int y,bool f,int sx,int sy,LPCSTR file):posx(x),posy(y),fixed(f),sizex(sx),sizey(sy)
 {
-    posx=x;posy=y;fixed=f;sizex=sx;sizey=sy;
     img=newimage();
     getimage(img,file);
 }
@@ -128,97 +127,4 @@ void object::fall(long long timegap)
     if(ongroud())return;
     vely+=gal*timegap;
 }
-/*************************************************
-玩家部分
-**************************************************/
-class player : public object
-{
-    public:
-        void velset(int op);//0上1左2右
-        void velunset(int op);
-        void init();
-};
-player Player;
-const double movevel=0.1,jumpvel=0.7;//！！！！随便设的
-void player::velset(int op)
-{
-    if(op)
-    {
-        if(op==1)
-        {
-            if(!keyl)keyl=1,velx-=movevel;
-        }
-        else 
-        {
-            if(!keyr)keyr=1,velx+=movevel;
-        }
-    }
-    else
-        if(ongroud())
-            vely-=jumpvel;
-}
-void player::velunset(int op)
-{
-    if(op==1)
-    {
-        if(keyl)keyl=0,velx+=movevel;
-    }
-    else
-    {
-        if(keyr)keyr=0,velx-=movevel;
-    }
-}
-void player::init()
-{
-    fixed=0;
-    posx=0;posy=-100;
-    sizex=24;sizey=51;
-    img=newimage();
-    getimage(img,"image/player.png");
-}
-/*************************************************
-按键部分
-**************************************************/
-void keymovement()
-{
-    while(kbmsg())
-    {
-        key_msg k=getkey();
-        if(k.msg==key_msg_down)
-        {
-            switch(k.key)
-            {
-                case 'a':
-                case 'A':
-                    Player.velset(1);
-                    break;
-                case 'd':
-                case 'D':
-                    Player.velset(2);
-                    break;
-                case 'w':
-                case 'W':
-                    Player.velset(0);
-                    break;
-                /*
-                case key_esc:
-                    return;
-                */
-            }
-        }
-        if(k.msg==key_msg_up)
-        {
-            switch(k.key)
-            {
-                case 'a':
-                case 'A':
-                    Player.velunset(1);
-                    break;
-                case 'd':
-                case 'D':
-                    Player.velunset(2);
-                    break;
-            }
-        }
-    }
-}
+
