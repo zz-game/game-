@@ -1,6 +1,7 @@
 /*************************************************
 按键部分
 **************************************************/
+bool gameruning=1;
 void keymovement()
 {
     while(kbmsg())
@@ -22,10 +23,9 @@ void keymovement()
                 case 'W':
                     Player.velset(0);
                     break;
-                /*
                 case key_esc:
-                    return;
-                */
+                    gameruning=0;
+                    break;
             }
         }
         if(k.msg==key_msg_up)

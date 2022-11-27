@@ -16,7 +16,7 @@ int main()
 {
     init();
     long long timelast,timenow=getCurrentTime(),timegap;
-    for(;is_run();delay_fps(300))
+    for(;gameruning;delay_fps(300))
     {
         timelast=timenow;
         timenow=getCurrentTime();
