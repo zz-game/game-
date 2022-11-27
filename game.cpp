@@ -1,10 +1,10 @@
 #include<bits/stdc++.h>
 #include<graphics.h>
 #include"object.h"
-#include"draw.h"
-#include"init.h"
 #include"player.h"
 #include"keymovement.h"
+#include"draw.h"
+#include"init.h"
 /*************************************************
 主函数部分
 **************************************************/
