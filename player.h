@@ -9,7 +9,7 @@ class player : public object
         void init();
 };
 player Player;
-const double movevel=0.1,jumpvel=0.7;//！！！！随便设的
+const double movevel=0.2,jumpvel=0.7;//！！！！随便设的
 void player::velset(int op)
 {
     if(op)

@@ -16,7 +16,7 @@ int main()
 {
     init();
     long long timelast,timenow=getCurrentTime(),timegap;
-    for(;gameruning;delay_fps(300))
+    for(;gameruning;delay_fps(180))
     {
         timelast=timenow;
         timenow=getCurrentTime();
@@ -30,7 +30,7 @@ int main()
         keymovement();
         draw();
         xyprintf(0,0,"timegap:%.3lld velx:%lf vely:%lf on:%d",timegap,Player.velx,Player.vely,Player.ongroud());
-        xyprintf(0,20,"touch:%d",Player.touch(*objlist[1]));
+        xyprintf(0,20,"touch:%d posx:%d posy %d",Player.touch(*objlist[1]),Player.posx,Player.posy);
     }
     closegraph();
     return 0;

@@ -73,17 +73,17 @@ void object::velchange()
 void object::move(long long timegap)
 {
     if(fixed)return;
-    int aimposx=posx+velx*timegap,aimposy=posy+vely*timegap;
     int signx=velx==0?0:(velx>0?1:-1),signy=vely==0?0:(vely>0?1:-1);
+    int aimposx=posx+(int)(fabs(velx)*timegap)*signx,aimposy=posy+(int)(std::fabs(vely)*timegap)*signy;//注意向零取整问题
     int listsize=objlist.size();
     object tem=*this;
     bool fla=1;
     while(fla&&posx!=aimposx)
     {
-        tem.posx=std::min(signx*(tem.posx+signx*movegap),signx*aimposx)*signx;
+        tem.posx=std::min(movegap,signx*(aimposx-posx))*signx+posx;
         for(int i=0;i<listsize;i++)
-            if(tem.touch(*objlist[i]))
             if(objlist[i]!=this)
+            if(tem.touch(*objlist[i]))
             {
                 fla=0;
                 break;
@@ -93,10 +93,10 @@ void object::move(long long timegap)
     fla=1;
     while(fla&&posy!=aimposy)
     {
-        tem.posy=std::min(signy*(tem.posy+signy*movegap),signy*aimposy)*signy;
+        tem.posy=std::min(movegap,signy*(aimposy-posy))*signy+posy;
         for(int i=0;i<listsize;i++)
-            if(tem.touch(*objlist[i]))
             if(objlist[i]!=this)
+            if(tem.touch(*objlist[i]))
             {
                 fla=0;
                 break;

@@ -14,4 +14,6 @@ void init()
     //先这样看看
     object *ground1=new object(-505,0,1,1010,44,"image/ground.png");
     objlist.push_back(ground1);
+    object *ground2=new object(0,-44,1,1010,44,"image/ground.png");
+    objlist.push_back(ground2);
 }
