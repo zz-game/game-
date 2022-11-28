@@ -29,7 +29,7 @@ int main()
         }
         keymovement();
 //      draw();
-        draw(-600,-600,600,600);
+        draw(-600,-600,1200,1200);
         xyprintf(0,0,"timegap:%.3lld velx:%lf vely:%lf on:%d",timegap,Player.velx,Player.vely,Player.ongroud());
         xyprintf(0,20,"touch:%d posx:%d posy %d",Player.touch(*objlist[1]),Player.posx,Player.posy);
     }

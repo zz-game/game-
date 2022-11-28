@@ -13,15 +13,15 @@ void draw()//无限制
         putimage((*objlist[i]).posx+pyx,(*objlist[i]).posy+pyy,(*objlist[i]).img);
     }
 }
-void draw(int XU,int YL,int XD,int YR)//传入限制区域左上坐标和右下坐标，需要限制显示区域大小大于1000*1000
+void draw(int XU,int YL,int Xsiz,int Ysiz)//传入限制区域左上坐标和大小，需要限制显示区域大小大于1000*1000
 {
     cleardevice();
     pyx=500-Player.posx-Player.sizex/2.0;
     pyy=500-Player.posy-Player.sizey/2.0;
     pyx=std::min(pyx,-XU);
-    pyx=std::max(pyx,1000-XD);
+    pyx=std::max(pyx,1000-XU-Xsiz);
     pyy=std::min(pyy,-YL);
-    pyy=std::max(pyy,1000-YR);
+    pyy=std::max(pyy,1000-YL-Ysiz);
     int listsize=objlist.size();
     for(int i=0;i<listsize;i++)
     {
