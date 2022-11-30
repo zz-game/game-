@@ -16,4 +16,6 @@ void init()
     objlist.push_back(ground1);
     object *ground2=new object(10,80,1,300,80,"image/sth_ground 300,80.png");
     objlist.push_back(ground2);
+    object *ground3=new object(320,0,1,300,80,"image/sth_ground 300,80.png");
+    objlist.push_back(ground3);
 }

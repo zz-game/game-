@@ -26,7 +26,7 @@ object::object()
 object::object(int x,int y,bool f,int sx,int sy,LPCSTR file):posx(x),posy(y),fixed(f),sizex(sx),sizey(sy)
 {
     img=newimage();
-    getimage(img,file);
+    getimage(img,file,sx,sy);
 }
 bool object::inside(int x,int y)
 {
@@ -55,7 +55,7 @@ void object::velchange()
         if(objlist[i]!=this)
         if(tem.touch(*objlist[i]))
         {
-            if(signx)keyr=0;
+            if(signx>0)keyr=0;
             else keyl=0;
             velx=0;
             break;
@@ -74,7 +74,7 @@ void object::move(long long timegap)
 {
     if(fixed)return;
     int signx=velx==0?0:(velx>0?1:-1),signy=vely==0?0:(vely>0?1:-1);
-    int aimposx=posx+(int)(fabs(velx)*timegap)*signx,aimposy=posy+(int)(std::fabs(vely)*timegap)*signy;//注意向零取整问题
+    int aimposx=posx+(int)(std::fabs(velx)*timegap)*signx,aimposy=posy+(int)(std::fabs(vely)*timegap)*signy;//注意向零取整问题
     int listsize=objlist.size();
     object tem=*this;
     bool fla=1;

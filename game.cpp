@@ -21,17 +21,17 @@ int main()
         timelast=timenow;
         timenow=getCurrentTime();
         timegap=timenow-timelast;
+        keymovement();
         int listsize=objlist.size();
         for(int i=0;i<listsize;i++)
         {
             (*objlist[i]).fall(timegap);
             (*objlist[i]).move(timegap);
         }
-        keymovement();
 //      draw();
         draw(-600,-600,1200,1200);
         xyprintf(0,0,"timegap:%.3lld velx:%lf vely:%lf on:%d",timegap,Player.velx,Player.vely,Player.ongroud());
-        xyprintf(0,20,"touch:%d posx:%d posy %d",Player.touch(*objlist[1]),Player.posx,Player.posy);
+        xyprintf(0,20,"touch:%d posx:%d posy:%d keyl:%d keyr:%d",Player.touch(*objlist[1]),Player.posx,Player.posy,Player.keyl,Player.keyr);
     }
     closegraph();
     return 0;
