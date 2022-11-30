@@ -22,6 +22,7 @@ int main()
         timenow=getCurrentTime();
         timegap=timenow-timelast;
         keymovement();
+        Player.doublejumpck();
         int listsize=objlist.size();
         for(int i=0;i<listsize;i++)
         {
