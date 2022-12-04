@@ -5,28 +5,37 @@ class object
 {
     public:
         int posx,posy;//左上角坐标
-        bool fixed;
-        double velx=0,vely=0;//x向右为正，y向下为正（图片显示形式
+        bool fixed;//浮空
+        double velx=0,vely=0;//速度 x向右为正，y向下为正（图片显示形式
         int sizex,sizey;//碰撞箱视为矩形（后面也许会改
         bool keyl=0,keyr=0;//为了player
+        bool neederase=0;//是否需要擦除
         PIMAGE img;
-        void move(long long timegap);//按速度移动 时间单位：毫秒
+        void move();//按速度移动 时间单位：毫秒
         void velchange();//速度碰撞归零
         bool touch(object f);//两个物品是否有部分重叠
         bool inside(int x,int y);//点是否在碰撞箱内
         bool ongroud();//物品是否直接或间接摆在地上
-        void fall(long long timegap);//随重力下落
+        void fall();//随重力下落
+        double distance(object f);//两个物品的距离
+        void del();//析构函数
         object(int x,int y,bool f,int sx,int sy,LPCSTR file);
         object();
 };
 object::object()
 {
-
+    img=newimage();
+    getimage(img,"",2,2);
 }
 object::object(int x,int y,bool f,int sx,int sy,LPCSTR file):posx(x),posy(y),fixed(f),sizex(sx),sizey(sy)
 {
     img=newimage();
     getimage(img,file,sx,sy);
+}
+void object::del()
+{
+    delimage(img);
+    // std::cout<<1;
 }
 bool object::inside(int x,int y)
 {
@@ -70,9 +79,9 @@ void object::velchange()
             break;
         }
 }
-void object::move(long long timegap)
+void object::move()
 {
-    if(fixed)return;
+//if(fixed)return;
     int signx=velx==0?0:(velx>0?1:-1),signy=vely==0?0:(vely>0?1:-1);
     int aimposx=posx+(int)(std::fabs(velx)*timegap)*signx,aimposy=posy+(int)(std::fabs(vely)*timegap)*signy;//注意向零取整问题
     int listsize=objlist.size();
@@ -122,9 +131,13 @@ bool object::ongroud()
     return fla;
 }
 const double gal=0.001;//重力加速度！！！！要调整
-void object::fall(long long timegap)
+void object::fall()
 {
     if(ongroud())return;
     vely+=gal*timegap;
 }
-
+double object::distance(object f)
+{
+    double dx=(posx+sizex/2.0)-(f.posx+f.sizex/2.0),dy=(posy+sizey/2.0)-(f.posy+f.sizey/2.0);
+    return sqrt(dx*dx+dy*dy);
+}

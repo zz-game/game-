@@ -53,7 +53,7 @@ void player::velunset(int op)
 void player::init()
 {
     fixed=0;
-    posx=0;posy=-100;
+    posx=0;posy=-1000;
     sizex=24;sizey=51;
     img=newimage();
     getimage(img,"image/player.png");
