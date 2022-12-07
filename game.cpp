@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 #include<graphics.h>
+#include"gameover.h"
 #include"time.h"
 #include"object.h"
 #include"player.h"
@@ -54,6 +55,8 @@ int main()
         xyprintf(0,0,"timegap:%.3lld velx:%lf vely:%lf on:%d",timegap,Player.velx,Player.vely,Player.ongroud());
         xyprintf(0,20,"touch:%d posx:%d posy:%d keyl:%d keyr:%d",Player.touch(*objlist[1]),Player.posx,Player.posy,Player.keyl,Player.keyr);
     }
+    gameover();
+    getch();
     closegraph();
     return 0;
 }

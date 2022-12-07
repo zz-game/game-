@@ -23,6 +23,7 @@ bool bullet::disapper()
     {
         if(objlist[i]!=this&&tem.touch(*objlist[i]))
         {
+            if(objlist[i]==&Player)gameruning=0;//击杀玩家
             tem.del();
             return neederase=1;
         }
