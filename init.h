@@ -14,6 +14,8 @@ void init()
     objlist.push_back(enemy1);
     Player.init();
     objlist.push_back(&Player);
+    Sword.init();
+    objlist.push_back(&Sword);
     //先这样看看
     object *ground1=new object(-300,0,1,300,80,"image/sth_ground 300,80.png");
     objlist.push_back(ground1);

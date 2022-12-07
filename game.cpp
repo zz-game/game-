@@ -5,6 +5,7 @@
 #include"object.h"
 #include"player.h"
 #include"enemy.h"
+#include"sword.h"
 #include"keymovement.h"
 #include"draw.h"
 #include"init.h"
@@ -21,6 +22,7 @@ int main()
         timegap=timenow-timelast;
         keymovement();
         Player.doublejumpck();
+        Sword.swordmovement();
         int listsize;
         listsize=bullist.size();
         for(int i=0;i<listsize;i++)

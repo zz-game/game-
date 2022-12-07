@@ -6,6 +6,7 @@ class player : public object
     public:
         double movevel=0.2,jumpvel=0.7;//！！！！随便设的
         bool doublejump=1;//二段跳
+        double toword=1;//朝向，向右为1，左为-1
         void doublejumpck();
         void velset(int op);//0上1左2右
         void velunset(int op);
@@ -22,10 +23,12 @@ void player::velset(int op)
     {
         if(op==1)
         {
+            toword=-1;
             if(!keyl)keyl=1,velx-=movevel;
         }
         else 
         {
+            toword=1;
             if(!keyr)keyr=1,velx+=movevel;
         }
     }

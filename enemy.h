@@ -18,7 +18,7 @@ bullet::bullet(int posX,int posY,double MaxDis):object(posX,posY,1,bulsize,bulsi
 bool bullet::disapper()
 {
     int listsize=objlist.size();
-    object tem(posx-1,posy-1,0,sizex+2,sizey+2,"");
+    object tem(posx-1,posy-1,0,sizex+2,sizey+2,"");//！！！！这种写法可能有问题，不过问题不大，先不管
     for(int i=0;i<listsize;i++)
     {
         if(objlist[i]!=this&&tem.touch(*objlist[i]))

@@ -10,7 +10,8 @@ void draw()//无限制
     int listsize=objlist.size();
     for(int i=0;i<listsize;i++)
     {
-        putimage((*objlist[i]).posx+pyx,(*objlist[i]).posy+pyy,(*objlist[i]).img);
+        //putimage((*objlist[i]).posx+pyx,(*objlist[i]).posy+pyy,(*objlist[i]).img);
+        putimage_rotate(NULL,(*objlist[i]).img,(*objlist[i]).posx+pyx,(*objlist[i]).posy+pyy,(*objlist[i]).centerx,(*objlist[i]).centery,(*objlist[i]).rad);
     }
 }
 void draw(int XU,int YL,int Xsiz,int Ysiz)//传入限制区域左上坐标和大小，需要限制显示区域大小大于1000*1000
@@ -25,6 +26,7 @@ void draw(int XU,int YL,int Xsiz,int Ysiz)//传入限制区域左上坐标和大
     int listsize=objlist.size();
     for(int i=0;i<listsize;i++)
     {
-        putimage((*objlist[i]).posx+pyx,(*objlist[i]).posy+pyy,(*objlist[i]).img);
+        //putimage((*objlist[i]).posx+pyx,(*objlist[i]).posy+pyy,(*objlist[i]).img);
+        putimage_rotate(NULL,(*objlist[i]).img,(*objlist[i]).posx+pyx,(*objlist[i]).posy+pyy,(*objlist[i]).centerx,(*objlist[i]).centery,(*objlist[i]).rad);
     }
 }

@@ -22,6 +22,10 @@ void keymovement()
                 case 'W':
                     Player.velset(0);
                     break;
+                case 'j':
+                case 'J':
+                    Sword.time=timenow;
+                    break;
                 case key_esc:
                     gameruning=0;
                     break;

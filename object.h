@@ -8,6 +8,11 @@ class object
         bool fixed;//浮空
         double velx=0,vely=0;//速度 x向右为正，y向下为正（图片显示形式
         int sizex,sizey;//碰撞箱视为矩形（后面也许会改
+        bool peng=1;//是否具有碰撞箱（sword）
+
+        float centerx=0,centery=0;//旋转中心（一个0~1之间的数）
+        double rad=0;//旋转角度（弧度制）
+
         bool keyl=0,keyr=0;//为了player
         bool neederase=0;//是否需要擦除
         PIMAGE img;
@@ -61,7 +66,7 @@ void object::velchange()
     object tem=*this;
     tem.posx+=signx*movegap;
     for(int i=0;i<listsize;i++)
-        if(objlist[i]!=this)
+        if(objlist[i]!=this&&objlist[i]->peng)
         if(tem.touch(*objlist[i]))
         {
             if(signx>0)keyr=0;
@@ -72,7 +77,7 @@ void object::velchange()
     tem.posx-=signx*movegap;
     tem.posy+=signy*movegap;
     for(int i=0;i<listsize;i++)
-        if(objlist[i]!=this)
+        if(objlist[i]!=this&&objlist[i]->peng)
         if(tem.touch(*objlist[i]))
         {
             vely=0;
@@ -91,7 +96,7 @@ void object::move()
     {
         tem.posx=std::min(movegap,signx*(aimposx-posx))*signx+posx;
         for(int i=0;i<listsize;i++)
-            if(objlist[i]!=this)
+            if(objlist[i]!=this&&objlist[i]->peng)
             if(tem.touch(*objlist[i]))
             {
                 fla=0;
@@ -104,7 +109,7 @@ void object::move()
     {
         tem.posy=std::min(movegap,signy*(aimposy-posy))*signy+posy;
         for(int i=0;i<listsize;i++)
-            if(objlist[i]!=this)
+            if(objlist[i]!=this&&objlist[i]->peng)
             if(tem.touch(*objlist[i]))
             {
                 fla=0;
@@ -122,7 +127,7 @@ bool object::ongroud()
     int listsize=objlist.size();
     bool fla=0;
     for(int i=0;i<listsize;i++)
-        if(objlist[i]!=this)
+        if(objlist[i]!=this&&objlist[i]->peng)
         if((*objlist[i]).touch(tem))
         {
             fla|=(*objlist[i]).ongroud();
