@@ -60,7 +60,7 @@ bool enemy::seen()
     if(distance(Player)>seer)
         return 0;
     int signx=(X>posx)-(X<posx+sizex),signy=(Y>posy)-(Y<posy+sizey);//[-1,1] n Z;（1右下，-1左上）
-    bullet virbul(posx+sizex*(1+signx)/2.0+2*signx+5*signy,posy+sizey*(1+signy)/2.0+2*signy+5*signx,seer);//测试是否看得见使用的物品
+    bullet virbul(posx+sizex*(1+signx)/2.0+2*signx-bulsize*(1-signx)/2+2*signy,posy+sizey*(1+signy)/2.0+2*signy-bulsize*(1-signy)/2+2*signx,seer);//测试是否看得见使用的物品
     virbul.velx=(X-(virbul.posx+virbul.sizex/2))/virbul.distance(Player)/10;
     virbul.vely=(Y-(virbul.posy+virbul.sizex/2))/virbul.distance(Player)/10;
     while((!virbul.neederase)&&virbul.distance(Player)>sqrt(Player.sizex*Player.sizex+Player.sizey*Player.sizey)/2.0+5)
@@ -108,7 +108,7 @@ void enemy::fire()
     bullet *Bul;
     int X=Player.posx+Player.sizex/2,Y=Player.posy+Player.sizey/2;
     int signx=(X>posx)-(X<posx+sizex),signy=(Y>posy)-(Y<posy+sizey);//[-1,1] n Z;（1右下，-1左上）
-    Bul=new bullet(posx+sizex*(1+signx)/2+signx,posy+sizey*(1+signy)/2+signy,shotr);
+    Bul=new bullet(posx+sizex*(1+signx)/2-bulsize*(1-signx)/2+signx,posy+sizey*(1+signy)/2-bulsize*(1-signy)/2+signy,shotr);
     Bul->velx=(X-Bul->posx)/Bul->distance(Player)*bulvel;
     Bul->vely=(Y-Bul->posy)/Bul->distance(Player)*bulvel;
     objlist.push_back(Bul);
