@@ -17,6 +17,11 @@ bullet::bullet(){}
 bullet::bullet(int posX,int posY,double MaxDis):object(posX,posY,1,bulsize,bulsize,"image/bullet.png"),Sposx(posX),Sposy(posy),maxdis(MaxDis){}
 bool bullet::disapper()
 {
+    int X=posx-Sposx,Y=posy-Sposy;
+    if(sqrt(X*X+Y*Y)>maxdis)
+    {
+        return neederase=1;
+    }
     int listsize=objlist.size();
     object tem(posx-1,posy-1,0,sizex+2,sizey+2,"");//！！！！这种写法可能有问题，不过问题不大，先不管
     for(int i=0;i<listsize;i++)
@@ -29,11 +34,6 @@ bool bullet::disapper()
         }
     }
     tem.del();
-    int X=posx-Sposx,Y=posy-Sposy;
-    if(sqrt(X*X+Y*Y)>maxdis)
-    {
-        return neederase=1;
-    }
     return 0;
 }
 /*************************************************
@@ -60,6 +60,7 @@ bool enemy::seen()
     int X=Player.posx+Player.sizex/2,Y=Player.posy+Player.sizey/2;
     if(distance(Player)>seer)
         return 0;
+    bool gr=gameruning;
     int signx=(X>posx)-(X<posx+sizex),signy=(Y>posy)-(Y<posy+sizey);//[-1,1] n Z;（1右下，-1左上）
     bullet virbul(posx+sizex*(1+signx)/2.0+2*signx-bulsize*(1-signx)/2+2*signy,posy+sizey*(1+signy)/2.0+2*signy-bulsize*(1-signy)/2+2*signx,seer);//测试是否看得见使用的物品
     virbul.velx=(X-(virbul.posx+virbul.sizex/2))/virbul.distance(Player)/10;
@@ -100,6 +101,7 @@ bool enemy::seen()
         virbul.disapper();
     }
     virbul.del();
+    gameruning=gr;
     if(virbul.distance(Player)<=sqrt(Player.sizex*Player.sizex+Player.sizey*Player.sizey)/2.0+5)
         return 1;
     return 0;
@@ -126,12 +128,12 @@ void enemy::AI()
         }
         int X=Player.posx+Player.sizex/2,Y=Player.posy+Player.sizey/2;
         int signx=(X>posx)-(X<posx+sizex),signy=(Y>posy)-(Y<posy+sizey);//[-1,1] n Z;（1右下，-1左上）
-        posx-=10*signx;
-        if(ongroud())
+        enemy tem=*this;
+        tem.posx-=24*signx;
+        if(tem.ongroud())
             velx=-signx*enmvel;
         else
             velx=0;
-        posx+=10*signx;
     }
     else
         velx=0;

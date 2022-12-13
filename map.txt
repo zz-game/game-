@@ -1,5 +1,24 @@
-0 -1000
-enemy 300 -500 image/player.png
-ground -300 0 1 300 80 image/sth_ground_300,80.png
-ground 10 80 1 300 80 image/sth_ground_300,80.png
-ground 320 0 1 300 80 image/sth_ground_300,80.png
+0 -1500
+enemy 300 -300 image/enemy(24X51).png
+enemy 300 -800 image/enemy(24X51).png
+enemy 810 -300 image/enemy(24X51).png
+enemy 1090 -800 image/enemy(24X51).png
+enemy 1390 -800 image/enemy(24X51).png
+enemy 1960 -600 image/enemy(24X51).png
+enemy 1960 -500 image/enemy(24X51).png
+enemy 1960 -400 image/enemy(24X51).png
+enemy 1930 -400 image/enemy(24X51).png
+enemy 1930 -500 image/enemy(24X51).png
+enemy 1900 -400 image/enemy(24X51).png
+ground -100 -2000 80 2000 image/ground1(80X2000).png
+ground -100 0 1000 80 image/ground2(1000X80).png
+ground 1600 0 1000 80 image/ground5(1000X80).png
+ground 300 -600 100 100 image/ground3(100X100).png
+ground 700 -190 100 150 image/ground4(100X150).png
+ground 1000 -370 100 100 image/ground3(100X100).png
+ground 1400 -370 100 100 image/ground3(100X100).png
+ground 1010 -200 100 100 image/ground3(100X100).png
+ground 1390 -200 100 100 image/ground3(100X100).png
+ground 1500 -2300 80 2000 image/ground6(80X2000).png
+ground 2700 0 100 100 image/end(100X100).png
+box 1105 -900 290 10 image/box(290X10).png

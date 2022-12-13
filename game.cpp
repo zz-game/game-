@@ -8,6 +8,7 @@
 #include"sword.h"
 #include"keymovement.h"
 #include"draw.h"
+#include"map.h"
 #include"init.h"
 /*************************************************
 主函数部分
@@ -53,7 +54,7 @@ int main()
             objlist[i]->move();
         }
 //      draw();
-        draw(-600,-600,1200,1200);
+        draw(-180,-2000,10000,3000);
         xyprintf(0,0,"timegap:%.3lld velx:%lf vely:%lf on:%d",timegap,Player.velx,Player.vely,Player.ongroud());
         xyprintf(0,20,"touch:%d posx:%d posy:%d keyl:%d keyr:%d",Player.touch(*objlist[1]),Player.posx,Player.posy,Player.keyl,Player.keyr);
     }
