@@ -8,7 +8,7 @@
 #include"sword.h"
 #include"keymovement.h"
 #include"draw.h"
-#include"map.h"
+#include"getmap.h"
 #include"init.h"
 /*************************************************
 主函数部分

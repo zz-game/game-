@@ -2,7 +2,7 @@
 导入地图部分
 **************************************************/
 char imag[100];
-void mapget(char x[])
+void getmap(char x[])
 {
     freopen(x,"r",stdin);
     int Px,Py;

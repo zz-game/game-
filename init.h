@@ -8,7 +8,7 @@ void init()
 	setcolor(BLACK);
 	setbkmode(TRANSPARENT);
 	setfont(16, 0, "黑体");
-    mapget("map.txt");
+    getmap("map.txt");
     Sword.init();
     objlist.push_back(&Sword);
 
