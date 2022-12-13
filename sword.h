@@ -12,6 +12,7 @@ void sword::init()
 {
     img=newimage();
     getimage(img,"image/sword.png");
+    fixed=1;
     sizex=8;sizey=50;
     centerx=0.5f;centery=0.9f;
     peng=0;

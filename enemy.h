@@ -75,7 +75,7 @@ bool enemy::seen()
         {
             tem.posx=std::min(movegap,vsignx*(aimposx-virbul.posx))*vsignx+virbul.posx;
             for(int i=0;i<listsize;i++)
-                if(tem.touch(*objlist[i]))
+                if(tem.touch(*objlist[i])&&objlist[i]->peng)
                 {
                     fla=0;
                     break;
@@ -88,7 +88,7 @@ bool enemy::seen()
         {
             tem.posy=std::min(movegap,vsigny*(aimposy-virbul.posy))*vsigny+virbul.posy;
             for(int i=0;i<listsize;i++)
-                if(tem.touch(*objlist[i]))
+                if(tem.touch(*objlist[i])&&objlist[i]->peng)
                 {
                     fla=0;
                     break;
@@ -122,7 +122,7 @@ void enemy::AI()
         if(timenow-lasttime>firetime)
         {
             lasttime=timenow;
-            //fire();
+            fire();
         }
         int X=Player.posx+Player.sizex/2,Y=Player.posy+Player.sizey/2;
         int signx=(X>posx)-(X<posx+sizex),signy=(Y>posy)-(Y<posy+sizey);//[-1,1] n Z;（1右下，-1左上）
