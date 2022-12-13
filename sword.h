@@ -27,4 +27,13 @@ void sword::swordmovement()
         return;
     }
     rad=radspeed*(timenow-time)*(-Player.toword);
+
+    int listsize=enmlist.size();
+    for(int i=0;i<listsize;i++)
+    if(touch(*enmlist[i]))
+    {
+        enmlist[i]->neederase=1;
+        enmlist.erase(enmlist.begin()+(i--));
+        listsize--;
+    }
 }

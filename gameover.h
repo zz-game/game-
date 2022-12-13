@@ -8,6 +8,6 @@ void gameover()
     outtextxy(50,150,"GAME OVER");
     setfont(30, 0, "黑体");
     outtextxy(400,400,"press any key to exit");//中文不知道为什么有乱码
-    Sleep(1000);
+    Sleep(500);
     flushkey();
 }
