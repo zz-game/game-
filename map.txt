@@ -1,0 +1,5 @@
+0 -1000
+enemy 300 -500 image/player.png
+ground -300 0 1 300 80 image/sth_ground_300,80.png
+ground 10 80 1 300 80 image/sth_ground_300,80.png
+ground 320 0 1 300 80 image/sth_ground_300,80.png

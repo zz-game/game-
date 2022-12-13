@@ -10,7 +10,7 @@ class player : public object
         void doublejumpck();
         void velset(int op);//0上1左2右
         void velunset(int op);
-        void init();
+        void init(int,int);
 }Player;
 void player::doublejumpck()
 {
@@ -53,10 +53,10 @@ void player::velunset(int op)
         if(keyr)keyr=0,velx-=movevel;
     }
 }
-void player::init()
+void player::init(int X=0,int Y=-1000)
 {
     fixed=0;
-    posx=0;posy=-1000;
+    posx=X;posy=Y;
     sizex=24;sizey=51;
     img=newimage();
     getimage(img,"image/player.png");
