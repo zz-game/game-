@@ -44,6 +44,10 @@ void object::del()
 }
 bool object::inside(int x,int y)
 {
+    int centerposx=sizex*centerx+posx,centerposy=sizey*centery+posy;//旋转中心坐标
+    int x0=(x-centerposx)*cos(rad)-(y-centerposy)*sin(rad)+centerposx;
+    int y0=(x-centerposx)*sin(rad)+(y-centerposy)*cos(rad)+centerposy;//考虑旋转
+    x=x0;y=y0;
     return x>=posx&&x<posx+sizex&&y>=posy&&y<posy+sizey;
 }
 bool object::touch(object f)

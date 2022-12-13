@@ -41,7 +41,7 @@ bool bullet::disapper()
 **************************************************/
 double seer=200,shotr=400;//警戒范围和射击范围半径
 double firetime=2000;//开枪间隔时间
-double enmvel=0.05;//敌人移速
+double enmvel=0.11;//敌人移速
 class enemy : public object
 {
     public:
@@ -122,7 +122,7 @@ void enemy::AI()
         if(timenow-lasttime>firetime)
         {
             lasttime=timenow;
-            fire();
+            //fire();
         }
         int X=Player.posx+Player.sizex/2,Y=Player.posy+Player.sizey/2;
         int signx=(X>posx)-(X<posx+sizex),signy=(Y>posy)-(Y<posy+sizey);//[-1,1] n Z;（1右下，-1左上）

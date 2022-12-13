@@ -3,7 +3,7 @@ class sword : public object
     public:
         int pyx=10,pyy=40;//相对player偏移（佩刀位置
         double radspeed=0.01;//旋转速度
-        long long time;//开始旋转时刻
+        long long time=0;//开始旋转时刻
         long long radtime=300;//旋转时长
         void swordmovement();
         void init();
