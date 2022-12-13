@@ -57,7 +57,7 @@ void player::init(int X=0,int Y=-1000)
 {
     fixed=0;
     posx=X;posy=Y;
-    sizex=24;sizey=51;
+    sizex=23;sizey=51;
     img=newimage();
-    getimage(img,"image/player(24X51).png");
+    getimage(img,"image/player(23X51).png");
 }

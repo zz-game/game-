@@ -27,7 +27,7 @@ void draw(int XU,int YL,int Xsiz,int Ysiz)//传入限制区域左上坐标和大
     for(int i=0;i<listsize;i++)
     {
         //putimage((*objlist[i]).posx+pyx,(*objlist[i]).posy+pyy,(*objlist[i]).img);
-        putimage_rotate(NULL,(*objlist[i]).img,(*objlist[i]).posx+pyx,(*objlist[i]).posy+pyy,(*objlist[i]).centerx,(*objlist[i]).centery,(*objlist[i]).rad);
+        putimage_rotate(NULL,objlist[i]->img,objlist[i]->sizex*objlist[i]->centerx+objlist[i]->posx+pyx,objlist[i]->sizey*objlist[i]->centery+objlist[i]->posy+pyy,objlist[i]->centerx,objlist[i]->centery,objlist[i]->rad);
     }
     xyprintf(100,900,"press w/a/s/d to move; press space to jump; press j to attack");
 }

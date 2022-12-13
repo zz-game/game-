@@ -11,6 +11,7 @@ void init()
     mapget("map.txt");
     Sword.init();
     objlist.push_back(&Sword);
+
     // enemy *enemy1=new enemy(300,-500,"image/player.png");
     // enmlist.push_back(enemy1);
     // objlist.push_back(enemy1);

@@ -9,6 +9,7 @@ class bullet : public object //子弹
     int Sposx,Sposy;//开始的地方(左上角)
     double maxdis;
     bool disapper();//是否消失函数（改为假的子弹）（消失返回1）
+    bool virdisapper();//假子弹消失
     bullet();
     bullet(int,int,double);
 };
@@ -22,13 +23,47 @@ bool bullet::disapper()
     {
         return neederase=1;
     }
+    int signx=velx==0?0:(velx>0?1:-1),signy=vely==0?0:(vely>0?1:-1);
+    int aimposx=posx+(int)(std::fabs(velx)*timegap)*signx+signx,aimposy=posy+(int)(std::fabs(vely)*timegap)*signy+signy;//注意向零取整问题
+    int listsize=objlist.size();
+    bullet tem=*this;
+    while(tem.posx!=aimposx)
+    {
+        tem.posx=std::min(movegap,signx*(aimposx-tem.posx))*signx+tem.posx;
+        for(int i=0;i<listsize;i++)
+            if(objlist[i]!=this)
+            if(tem.touch(*objlist[i]))
+            {
+                if(objlist[i]==&Player)gameruning=0;
+                return neederase=1;
+            }
+    }
+    while(tem.posy!=aimposy)
+    {
+        tem.posy=std::min(movegap,signy*(aimposy-tem.posy))*signy+tem.posy;
+        for(int i=0;i<listsize;i++)
+            if(objlist[i]!=this)
+            if(tem.touch(*objlist[i]))
+            {
+                if(objlist[i]==&Player)gameruning=0;
+                return neederase=1;
+            }
+    }
+    return 0;
+}
+bool bullet::virdisapper()
+{
+    int X=posx-Sposx,Y=posy-Sposy;
+    if(sqrt(X*X+Y*Y)>maxdis)
+    {
+        return neederase=1;
+    }
     int listsize=objlist.size();
     object tem(posx-1,posy-1,0,sizex+2,sizey+2,"");//！！！！这种写法可能有问题，不过问题不大，先不管
     for(int i=0;i<listsize;i++)
     {
-        if(objlist[i]!=this&&tem.touch(*objlist[i]))
+        if(objlist[i]!=this&&objlist[i]->peng&&tem.touch(*objlist[i]))
         {
-            if(objlist[i]==&Player)gameruning=0;//击杀玩家
             tem.del();
             return neederase=1;
         }
@@ -97,8 +132,8 @@ bool enemy::seen()
             if(fla)
                 virbul=tem;
         }
+        virbul.virdisapper();
         virbul.velchange();
-        virbul.disapper();
     }
     virbul.del();
     gameruning=gr;

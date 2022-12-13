@@ -1,7 +1,7 @@
 class sword : public object
 {
     public:
-        int pyx=10,pyy=40;//相对player偏移（佩刀位置
+        int pyx=14,pyy=-5;//相对player偏移（佩刀位置
         double radspeed=0.01;//旋转速度
         long long time=0;//开始旋转时刻
         long long radtime=300;//旋转时长
@@ -19,6 +19,7 @@ void sword::init()
 }
 void sword::swordmovement()
 {
+    pyx=Player.toword>0?14:1;//换朝向换手
     posx=Player.posx+pyx;
     posy=Player.posy+pyy;
     if(timenow-time>radtime)

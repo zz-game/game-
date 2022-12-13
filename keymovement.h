@@ -24,7 +24,7 @@ void keymovement()
                     break;
                 case 'j':
                 case 'J':
-                    Sword.time=timenow;
+                    if(timenow-Sword.time>Sword.radtime)Sword.time=timenow;
                     break;
                 case key_esc:
                     gameruning=0;
