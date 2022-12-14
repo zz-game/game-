@@ -1,7 +1,7 @@
 ; 该脚本使用 HM VNISEdit 脚本编辑器向导产生
 
 ; 安装程序初始定义常量
-!define PRODUCT_NAME "大人时代没变"
+!define PRODUCT_NAME "时代没变"
 !define PRODUCT_VERSION "1.0"
 !define PRODUCT_PUBLISHER "赵君灏，赵向佶恺"
 !define PRODUCT_WEB_SITE "http://www.mycompany.com"
@@ -41,7 +41,7 @@ SetCompressor lzma
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
 OutFile "Setup.exe"
-InstallDir "$PROGRAMFILES\大人时代没变"
+InstallDir "$PROGRAMFILES\时代没变"
 InstallDirRegKey HKLM "${PRODUCT_UNINST_KEY}" "UninstallString"
 ShowInstDetails show
 ShowUnInstDetails show
@@ -50,7 +50,7 @@ Section "MainSection" SEC01
   SetOutPath "$INSTDIR"
   SetOverwrite ifnewer
   File "map.txt"
-  CreateShortCut "$DESKTOP\大人时代没变.lnk" "$INSTDIR\game.exe"
+  CreateShortCut "$DESKTOP\时代没变.lnk" "$INSTDIR\game.exe"
   File "game.exe"
   SetOutPath "$INSTDIR\image"
   File "image\*.*"
@@ -59,9 +59,9 @@ SectionEnd
 Section -AdditionalIcons
   SetOutPath $INSTDIR
   WriteIniStr "$INSTDIR\${PRODUCT_NAME}.url" "InternetShortcut" "URL" "${PRODUCT_WEB_SITE}"
-  CreateDirectory "$SMPROGRAMS\大人时代没变"
-  CreateShortCut "$SMPROGRAMS\大人时代没变\Website.lnk" "$INSTDIR\${PRODUCT_NAME}.url"
-  CreateShortCut "$SMPROGRAMS\大人时代没变\Uninstall.lnk" "$INSTDIR\uninst.exe"
+  CreateDirectory "$SMPROGRAMS\时代没变"
+  CreateShortCut "$SMPROGRAMS\时代没变\Website.lnk" "$INSTDIR\${PRODUCT_NAME}.url"
+  CreateShortCut "$SMPROGRAMS\时代没变\Uninstall.lnk" "$INSTDIR\uninst.exe"
 SectionEnd
 
 Section -Post
@@ -86,11 +86,11 @@ Section Uninstall
   Delete "$INSTDIR\game.exe"
   Delete "$INSTDIR\map.txt"
 
-  Delete "$SMPROGRAMS\大人时代没变\Uninstall.lnk"
-  Delete "$SMPROGRAMS\大人时代没变\Website.lnk"
-  Delete "$DESKTOP\大人时代没变.lnk"
+  Delete "$SMPROGRAMS\时代没变\Uninstall.lnk"
+  Delete "$SMPROGRAMS\时代没变\Website.lnk"
+  Delete "$DESKTOP\时代没变.lnk"
 
-  RMDir "$SMPROGRAMS\大人时代没变"
+  RMDir "$SMPROGRAMS\时代没变"
   RMDir "$INSTDIR\image"
 
   RMDir "$INSTDIR"
